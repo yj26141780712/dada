@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "d63b4a9e-dc2b-4084-8664-8331e0c904a7",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "wenzi003": {
+      "ver": "1.0.3",
+      "uuid": "c61b13c5-2120-409a-a83c-ad8a3d6fdc2a",
+      "rawTextureUuid": "d63b4a9e-dc2b-4084-8664-8331e0c904a7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -1,
+      "trimX": 1,
+      "trimY": 2,
+      "width": 329,
+      "height": 21,
+      "rawWidth": 331,
+      "rawHeight": 23,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "d63b4a9e-dc2b-4084-8664-8331e0c904a7@6c48a",
+      "displayName": "wenzi003",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "d63b4a9e-dc2b-4084-8664-8331e0c904a7"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "d63b4a9e-dc2b-4084-8664-8331e0c904a7@6c48a"
+  }
+}

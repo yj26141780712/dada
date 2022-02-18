@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "db425c6c-0e64-451c-aaa5-5118cfef9f55",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "rain9": {
+      "ver": "1.0.3",
+      "uuid": "69e9a984-fb77-4929-b522-cc3c2e88f5d8",
+      "rawTextureUuid": "db425c6c-0e64-451c-aaa5-5118cfef9f55",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": 16.5,
+      "trimX": 20,
+      "trimY": 24,
+      "width": 171,
+      "height": 169,
+      "rawWidth": 210,
+      "rawHeight": 250,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "db425c6c-0e64-451c-aaa5-5118cfef9f55@6c48a",
+      "displayName": "rain9",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "db425c6c-0e64-451c-aaa5-5118cfef9f55"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "db425c6c-0e64-451c-aaa5-5118cfef9f55@6c48a"
+  }
+}

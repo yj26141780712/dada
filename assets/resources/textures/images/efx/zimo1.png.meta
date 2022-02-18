@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "c0812c0f-225b-4ea8-8935-535b8377c9bc",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "zimo1": {
+      "ver": "1.0.3",
+      "uuid": "3c0f974f-e10b-4609-a564-29046d422f28",
+      "rawTextureUuid": "c0812c0f-225b-4ea8-8935-535b8377c9bc",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 7.5,
+      "offsetY": -0.5,
+      "trimX": 146,
+      "trimY": 15,
+      "width": 223,
+      "height": 151,
+      "rawWidth": 500,
+      "rawHeight": 180,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "c0812c0f-225b-4ea8-8935-535b8377c9bc@6c48a",
+      "displayName": "zimo1",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "c0812c0f-225b-4ea8-8935-535b8377c9bc"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "c0812c0f-225b-4ea8-8935-535b8377c9bc@6c48a"
+  }
+}

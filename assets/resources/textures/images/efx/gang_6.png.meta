@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "9f23d6e3-bcdd-45be-9d15-8c3ffda16500",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "gang_6": {
+      "ver": "1.0.3",
+      "uuid": "c2f575b6-fc89-454e-b6cc-f4fb310e9b19",
+      "rawTextureUuid": "9f23d6e3-bcdd-45be-9d15-8c3ffda16500",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -6,
+      "offsetY": -7.5,
+      "trimX": 2,
+      "trimY": 17,
+      "width": 484,
+      "height": 161,
+      "rawWidth": 500,
+      "rawHeight": 180,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "9f23d6e3-bcdd-45be-9d15-8c3ffda16500@6c48a",
+      "displayName": "gang_6",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "9f23d6e3-bcdd-45be-9d15-8c3ffda16500"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "9f23d6e3-bcdd-45be-9d15-8c3ffda16500@6c48a"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "5bf38347-8a56-42cb-a89e-ccad0d5dfa2e",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "guafeng1_2": {
+      "ver": "1.0.3",
+      "uuid": "c418c218-d861-4c6e-85a6-a1917cb2607c",
+      "rawTextureUuid": "5bf38347-8a56-42cb-a89e-ccad0d5dfa2e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -85.5,
+      "offsetY": 0,
+      "trimX": 37,
+      "trimY": 0,
+      "width": 255,
+      "height": 180,
+      "rawWidth": 500,
+      "rawHeight": 180,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "5bf38347-8a56-42cb-a89e-ccad0d5dfa2e@6c48a",
+      "displayName": "guafeng1_2",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "5bf38347-8a56-42cb-a89e-ccad0d5dfa2e"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "5bf38347-8a56-42cb-a89e-ccad0d5dfa2e@6c48a"
+  }
+}

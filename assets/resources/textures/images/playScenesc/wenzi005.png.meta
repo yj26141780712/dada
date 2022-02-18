@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "b2dbb3a6-5177-40b4-8c24-ec2aabe2c4cf",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "wenzi005": {
+      "ver": "1.0.3",
+      "uuid": "f2855192-6250-41a5-8b9f-fe2b02040bba",
+      "rawTextureUuid": "b2dbb3a6-5177-40b4-8c24-ec2aabe2c4cf",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 0,
+      "width": 329,
+      "height": 23,
+      "rawWidth": 331,
+      "rawHeight": 23,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "b2dbb3a6-5177-40b4-8c24-ec2aabe2c4cf@6c48a",
+      "displayName": "wenzi005",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "b2dbb3a6-5177-40b4-8c24-ec2aabe2c4cf"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "b2dbb3a6-5177-40b4-8c24-ec2aabe2c4cf@6c48a"
+  }
+}

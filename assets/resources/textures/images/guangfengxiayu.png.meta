@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "4a98e167-c093-449c-be3e-8446c00d0120",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "guangfengxiayu": {
+      "ver": "1.0.3",
+      "uuid": "e47b00b2-acf5-40ac-9ae1-78fe3aa1e731",
+      "rawTextureUuid": "4a98e167-c093-449c-be3e-8446c00d0120",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -58.5,
+      "offsetY": 71.5,
+      "trimX": 2,
+      "trimY": 3,
+      "width": 903,
+      "height": 875,
+      "rawWidth": 1024,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "4a98e167-c093-449c-be3e-8446c00d0120@6c48a",
+      "displayName": "guangfengxiayu",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "4a98e167-c093-449c-be3e-8446c00d0120"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "4a98e167-c093-449c-be3e-8446c00d0120@6c48a"
+  }
+}

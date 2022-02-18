@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "e0dbebb9-9050-4db3-b2cd-ffe415d1b93d",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "gang_12": {
+      "ver": "1.0.3",
+      "uuid": "f82e7e6c-f80a-4db0-b88f-a1bc222d4d86",
+      "rawTextureUuid": "e0dbebb9-9050-4db3-b2cd-ffe415d1b93d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -6,
+      "offsetY": -0.5,
+      "trimX": 2,
+      "trimY": 1,
+      "width": 484,
+      "height": 179,
+      "rawWidth": 500,
+      "rawHeight": 180,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "e0dbebb9-9050-4db3-b2cd-ffe415d1b93d@6c48a",
+      "displayName": "gang_12",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "e0dbebb9-9050-4db3-b2cd-ffe415d1b93d"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "e0dbebb9-9050-4db3-b2cd-ffe415d1b93d@6c48a"
+  }
+}

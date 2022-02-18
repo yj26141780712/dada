@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "a180fb5e-758a-4f5b-8207-42b5a1504dd4",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "rain12": {
+      "ver": "1.0.3",
+      "uuid": "92051a13-178a-4963-b761-28430a7d777e",
+      "rawTextureUuid": "a180fb5e-758a-4f5b-8207-42b5a1504dd4",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1,
+      "offsetY": 16.5,
+      "trimX": 21,
+      "trimY": 24,
+      "width": 170,
+      "height": 169,
+      "rawWidth": 210,
+      "rawHeight": 250,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "a180fb5e-758a-4f5b-8207-42b5a1504dd4@6c48a",
+      "displayName": "rain12",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "a180fb5e-758a-4f5b-8207-42b5a1504dd4"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "a180fb5e-758a-4f5b-8207-42b5a1504dd4@6c48a"
+  }
+}

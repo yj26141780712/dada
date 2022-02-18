@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "73a50397-ca16-4a75-bee5-b6c642ac9ffb",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "paohu_6": {
+      "ver": "1.0.3",
+      "uuid": "64c4df35-90e0-4276-984f-cf32491b2394",
+      "rawTextureUuid": "73a50397-ca16-4a75-bee5-b6c642ac9ffb",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -6,
+      "offsetY": -7.5,
+      "trimX": 2,
+      "trimY": 17,
+      "width": 484,
+      "height": 161,
+      "rawWidth": 500,
+      "rawHeight": 180,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "73a50397-ca16-4a75-bee5-b6c642ac9ffb@6c48a",
+      "displayName": "paohu_6",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "73a50397-ca16-4a75-bee5-b6c642ac9ffb"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "73a50397-ca16-4a75-bee5-b6c642ac9ffb@6c48a"
+  }
+}

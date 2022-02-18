@@ -1,0 +1,68 @@
+{
+  "ver": "1.0.22",
+  "importer": "image",
+  "imported": true,
+  "uuid": "9b803178-6e14-4e79-b844-b46bd6e58064",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "peng_2": {
+      "ver": "1.0.3",
+      "uuid": "f7132675-6c23-418c-826f-77c98fc97950",
+      "rawTextureUuid": "9b803178-6e14-4e79-b844-b46bd6e58064",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 12,
+      "offsetY": 7.5,
+      "trimX": 62,
+      "trimY": 9,
+      "width": 400,
+      "height": 147,
+      "rawWidth": 500,
+      "rawHeight": 180,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {},
+      "importer": "*",
+      "imported": false,
+      "files": [],
+      "userData": {},
+      "displayName": "",
+      "id": "",
+      "name": ""
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "9b803178-6e14-4e79-b844-b46bd6e58064@6c48a",
+      "displayName": "peng_2",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "9b803178-6e14-4e79-b844-b46bd6e58064"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "9b803178-6e14-4e79-b844-b46bd6e58064@6c48a"
+  }
+}
