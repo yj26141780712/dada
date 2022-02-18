@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, find, sys, tween, setDisplayStats, Vec3, Vec2, Sprite, Color } from 'cc';
 import { Common } from './Common';
 const { ccclass, property } = _decorator;
 
@@ -24,12 +24,48 @@ export class Loading extends Component {
     // @property
     // serializableDummy = 0;
 
+    @property(Node)
+    public tipLabelNode: Node = null;
+
+    @property(Node)
+    public splashNode: Node = null;
+
+    @property()
+    public splashShowTime = 3;
+
+    stateStr = '';
+    progress = 0.0;
+    isLoading = false;
+
     onLoad() {
-        Common.init();
+        Common.initManager();
+        this.splashNode.active = true;
     }
 
     start() {
-        // [3]
+        setDisplayStats(false); //隐藏状态显示
+        // [3] 
+        console.log('loadingstart');
+        if (sys.os !== sys.OS.IOS || !sys.isNative) {
+            // 1.非IOS系统  2.IOS系统非原生平台
+            const sprite = this.splashNode.getComponent(Sprite);
+            tween(new Vec2(0, 0)).to(0.5, new Vec2(1, 1), {
+                onUpdate: (t, r) => {
+                    sprite.color = new Color(255, 255, 255, 255 - 255 * r);
+                }
+            }).delay(3).start();
+        } else {
+            this.splashNode.active = false;
+            this.checkVersion();
+        }
+    }
+
+    task1() {
+
+    }
+
+    checkVersion() {
+        console.log('检查程序版本');
     }
 
     // update (deltaTime: number) {

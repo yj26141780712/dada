@@ -2,7 +2,7 @@ import { UserManager } from "./UserManager";
 
 export class Common {
     static userManager: UserManager;
-    static init() {
+    static initManager() {
         this.userManager = new UserManager();
     }
 }
