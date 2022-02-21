@@ -1,7 +1,7 @@
-
-import { _decorator, Component, Node, find, sys, tween, setDisplayStats, Vec3, Vec2, Sprite, Color } from 'cc';
-import { Common } from './Common';
+import { _decorator, Component, Node, sys, tween, setDisplayStats, Vec2, Sprite, Color, Label, resources, director } from 'cc';
+import { Common } from '../other/Common';
 const { ccclass, property } = _decorator;
+import axios from 'axios';
 
 /**
  * Predefined variables
@@ -36,8 +36,9 @@ export class Loading extends Component {
     stateStr = '';
     progress = 0.0;
     isLoading = false;
-
+    tipLabel: Label;
     onLoad() {
+        console.log(axios);
         Common.initManager();
         this.splashNode.active = true;
     }
@@ -52,25 +53,61 @@ export class Loading extends Component {
             tween(new Vec2(0, 0)).to(0.5, new Vec2(1, 1), {
                 onUpdate: (t, r) => {
                     sprite.color = new Color(255, 255, 255, 255 - 255 * r);
+                },
+                onComplete: () => {
+                    this.checkVersion();
                 }
             }).delay(3).start();
         } else {
             this.splashNode.active = false;
             this.checkVersion();
         }
+        this.tipLabel = this.tipLabelNode.getComponent(Label);
     }
 
-    task1() {
-
-    }
 
     checkVersion() {
         console.log('检查程序版本');
+        this.stateStr = '正在连接服务器...';
+        // Common.http.get('get_serverinfo').then(res => {
+        //     console.log(res);
+        // });
+        // Common.http.get('123', {}).subscribe(res => {
+        //     console.log(res);
+        // })
+        // 请求失败
+        // 请求成功
+        this.startPreloading();
     }
 
-    // update (deltaTime: number) {
-    //     // [4]
-    // }
+    startPreloading() {
+        this.stateStr = '正在加载资源，请稍候';
+        this.isLoading = true;
+        resources.loadDir("textures", (finished, total) => {
+            this.progress = finished / total;
+        }, () => {
+            this.isLoading = false;
+            this.stateStr = '准备登陆';
+            director.loadScene('login');
+        });
+    }
+
+    onBtnDownloadClicked() {
+        sys.openURL('');
+    }
+
+    update(deltaTime: number) {
+        this.tipLabel.string = this.stateStr;
+        if (this.isLoading) {
+            this.tipLabel.string += Math.floor(this.progress * 100) + "%";
+        }
+        else {
+            var t = Math.floor(Date.now() / 1000) % 4;
+            for (var i = 0; i < t; ++i) {
+                this.tipLabel.string += '.';
+            }
+        }
+    }
 }
 
 /**

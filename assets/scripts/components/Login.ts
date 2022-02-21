@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, director } from 'cc';
+import { _decorator, Component, Node, director, setDisplayStats, sys, Canvas } from 'cc';
 const { ccclass, property } = _decorator;
 
 /**
@@ -19,11 +19,24 @@ export class Login extends Component {
     // [1]
     // dummy = '';
 
+    @property(Node)
+    public btnVisitorNode: Node = null;
     // [2]
     // @property
     // serializableDummy = 0;
+    password = '';
+
+    onLoad() {
+        if (!sys.isNative && sys.isMobile) {
+            // const canvas = this.node.getComponent(Canvas);
+        }
+        if (!sys.isNative || sys.os === sys.OS.WINDOWS) {
+            this.btnVisitorNode.active = false;
+        }
+    }
 
     start() {
+        setDisplayStats(false);
         // [3]
     }
 
@@ -34,9 +47,13 @@ export class Login extends Component {
         director.loadScene('');
     }
 
-    // update (deltaTime: number) {
-    //     // [4]
-    // }
+    wechatLogin() {
+
+    }
+
+    update(deltaTime: number) {
+        // this.tipn
+    }
 }
 
 /**

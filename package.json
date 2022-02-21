@@ -5,5 +5,14 @@
   "version": "3.4.0",
   "creator": {
     "version": "3.4.0"
+  },
+  "dependencies": {
+    "axios": "^0.26.0",
+    "lodash-es": "^4.17.21",
+    "protobufjs": "^6.11.2",
+    "rxjs": "^7.5.4"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.6"
   }
 }
