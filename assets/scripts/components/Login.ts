@@ -1,5 +1,7 @@
 
 import { _decorator, Component, Node, director, setDisplayStats, sys } from 'cc';
+import { Common } from '../other/Common';
+import { AudioManager } from './AudioManager';
 const { ccclass, property } = _decorator;
 /**
  * Predefined variables
@@ -25,27 +27,41 @@ export class Login extends Component {
         if (!sys.isNative && sys.isMobile) {
             // const canvas = this.node.getComponent(Canvas);
         }
-        if (!sys.isNative || sys.os === sys.OS.WINDOWS) {
-            this.btnVisitorNode.active = false;
-        }
+
+        // 播放登录场景音乐
+        AudioManager.instance.playMusic(true);
         //监听是否需要创建角色 如果需要跳转到角色创建场景
+
+        // if (!sys.isNative || sys.os === sys.OS.WINDOWS) {
+        //     this.btnVisitorNode.active = false;
+        // }
     }
 
 
     start() {
         setDisplayStats(false);
         // [3]
+        const account = sys.localStorage.getItem("wx_account");
+        const sign = sys.localStorage.getItem("wx_sign");
+        if (account != null && sign != null) {
+            const ret = {
+                errcode: 0,
+                account: account,
+                sign: sign
+            }
+            Common.userManager.onAuth(ret);
+        }
     }
 
     //游客登录 
 
     visitorLogin() {
         //游客登录成功跳转到游戏场景
-        director.loadScene('');
+        Common.userManager.gusetLogin();
     }
 
     wechatLogin() {
-
+        Common.anySDKManager.login();
     }
 
     update(deltaTime: number) {

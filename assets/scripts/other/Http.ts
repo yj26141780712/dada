@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export interface ServerInfo {
     version: string;
-
 }
 
 const URL = DEV ? "http://localhost:9000/" : "http://localhost:9000/";

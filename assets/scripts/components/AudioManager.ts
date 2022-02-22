@@ -26,6 +26,7 @@ export class AudioManager {
      * @param loop 是否循环播放
      */
     playMusic(loop: boolean) {
+        console.log(AudioManager._audioSource);
         const audioSource = AudioManager._audioSource;
         assert(audioSource, 'audioManager not init!');
         audioSource.loop = loop;

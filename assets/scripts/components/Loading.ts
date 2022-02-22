@@ -74,6 +74,7 @@ export class Loading extends Component {
         this.stateStr = '正在连接服务器...';
         Common.http.get('get_serverinfo').then((res) => {
             if (res.status === 200 && res.data) {
+                Common.hallIP = res.data.hall;
                 if (res.data.version !== Common.VERSION) {
                     this.alterNode.active = true;
                 } else {
@@ -85,7 +86,6 @@ export class Loading extends Component {
         });
         // 请求失败
         // 请求成功
-
     }
 
     startPreloading() {
