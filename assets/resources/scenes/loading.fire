@@ -1184,6 +1184,7 @@
     "splashNode": {
       "__id__": 11
     },
+    "alterNode": null,
     "splashShowTime": 3,
     "_id": "99TasWJVBDe5HG8PSHRhRz"
   },

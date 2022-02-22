@@ -1,7 +1,6 @@
 
-import { _decorator, Component, Node, director, setDisplayStats, sys, Canvas } from 'cc';
+import { _decorator, Component, Node, director, setDisplayStats, sys } from 'cc';
 const { ccclass, property } = _decorator;
-
 /**
  * Predefined variables
  * Name = Login
@@ -16,14 +15,10 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Login')
 export class Login extends Component {
-    // [1]
-    // dummy = '';
 
     @property(Node)
     public btnVisitorNode: Node = null;
-    // [2]
-    // @property
-    // serializableDummy = 0;
+
     password = '';
 
     onLoad() {
@@ -33,7 +28,9 @@ export class Login extends Component {
         if (!sys.isNative || sys.os === sys.OS.WINDOWS) {
             this.btnVisitorNode.active = false;
         }
+        //监听是否需要创建角色 如果需要跳转到角色创建场景
     }
+
 
     start() {
         setDisplayStats(false);

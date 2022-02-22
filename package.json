@@ -10,7 +10,9 @@
     "axios": "^0.26.0",
     "lodash-es": "^4.17.21",
     "protobufjs": "^6.11.2",
-    "rxjs": "^7.5.4"
+    "rxjs": "^7.5.4",
+    "socket.io": "^4.4.1",
+    "socket.io-client": "^4.4.1"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.6"

@@ -1,7 +1,8 @@
 import { _decorator, Component, Node, sys, tween, setDisplayStats, Vec2, Sprite, Color, Label, resources, director } from 'cc';
 import { Common } from '../other/Common';
 const { ccclass, property } = _decorator;
-import axios from 'axios';
+
+
 
 /**
  * Predefined variables
@@ -30,6 +31,9 @@ export class Loading extends Component {
     @property(Node)
     public splashNode: Node = null;
 
+    @property(Node)
+    public alterNode: Node = null;
+
     @property()
     public splashShowTime = 3;
 
@@ -38,7 +42,6 @@ export class Loading extends Component {
     isLoading = false;
     tipLabel: Label;
     onLoad() {
-        console.log(axios);
         Common.initManager();
         this.splashNode.active = true;
     }
@@ -69,15 +72,20 @@ export class Loading extends Component {
     checkVersion() {
         console.log('检查程序版本');
         this.stateStr = '正在连接服务器...';
-        // Common.http.get('get_serverinfo').then(res => {
-        //     console.log(res);
-        // });
-        // Common.http.get('123', {}).subscribe(res => {
-        //     console.log(res);
-        // })
+        Common.http.get('get_serverinfo').then((res) => {
+            if (res.status === 200 && res.data) {
+                if (res.data.version !== Common.VERSION) {
+                    this.alterNode.active = true;
+                } else {
+                    this.startPreloading();
+                }
+            }
+        }).catch(err => {
+            console.log('服务器连接失败！');
+        });
         // 请求失败
         // 请求成功
-        this.startPreloading();
+
     }
 
     startPreloading() {
