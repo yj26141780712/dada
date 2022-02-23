@@ -1,4 +1,5 @@
 import { AnySDKManager } from "./AnySDKManager";
+import { GameNetManager } from "./GameNetManager";
 import { Http } from "./Http";
 import { Net } from "./Net";
 import { UserManager } from "./UserManager";
@@ -6,6 +7,7 @@ import { UserManager } from "./UserManager";
 const VERSION = '20161227';
 
 export class Common {
+    static gameNetManager: GameNetManager;
     static anySDKManager: AnySDKManager;
     static userManager: UserManager;
     static http: Http;
@@ -17,5 +19,6 @@ export class Common {
         this.http = new Http();
         this.net = new Net();
         this.anySDKManager = new AnySDKManager();
+        this.gameNetManager = new GameNetManager();
     }
 }

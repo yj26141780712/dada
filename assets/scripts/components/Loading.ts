@@ -1,4 +1,5 @@
 import { _decorator, Component, Node, sys, tween, setDisplayStats, Vec2, Sprite, Color, Label, resources, director } from 'cc';
+import { DEBUG, DEV } from 'cc/env';
 import { Common } from '../other/Common';
 const { ccclass, property } = _decorator;
 
@@ -74,7 +75,7 @@ export class Loading extends Component {
         this.stateStr = '正在连接服务器...';
         Common.http.get('get_serverinfo').then((res) => {
             if (res.status === 200 && res.data) {
-                Common.hallIP = res.data.hall;
+                Common.hallIP = `http://${res.data.hall}/`;
                 if (res.data.version !== Common.VERSION) {
                     this.alterNode.active = true;
                 } else {
@@ -91,13 +92,17 @@ export class Loading extends Component {
     startPreloading() {
         this.stateStr = '正在加载资源，请稍候';
         this.isLoading = true;
-        resources.loadDir("textures", (finished, total) => {
-            this.progress = finished / total;
-        }, () => {
-            this.isLoading = false;
-            this.stateStr = '准备登陆';
+        if (DEV || DEBUG) {
             director.loadScene('login');
-        });
+        } else {
+            resources.loadDir("textures", (finished, total) => {
+                this.progress = finished / total;
+            }, () => {
+                this.isLoading = false;
+                this.stateStr = '准备登陆';
+                director.loadScene('login');
+            });
+        }
     }
 
     onBtnDownloadClicked() {

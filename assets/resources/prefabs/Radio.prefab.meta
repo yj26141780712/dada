@@ -2,12 +2,12 @@
   "ver": "1.1.35",
   "importer": "prefab",
   "imported": true,
-  "uuid": "65bb91f9-898a-4f92-a37d-fb84bed2cd5c",
+  "uuid": "b4097179-bab7-41dc-8ac7-f951a21041df",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "PengGangLeftAndRight"
+    "syncNodeName": "Radio"
   }
 }
