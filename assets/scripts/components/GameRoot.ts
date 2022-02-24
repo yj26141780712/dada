@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, AudioSource, assert, game } from 'cc';
+import { _decorator, Component, Node, AudioSource, assert, game, director } from 'cc';
 import { AudioManager } from './AudioManager';
 const { ccclass, property } = _decorator;
 
@@ -27,6 +27,7 @@ export class GameRoot extends Component {
         this._audioSource = audioSource;
         game.addPersistRootNode(this.node);
         AudioManager.instance.init(this._audioSource);
+    
     }
 
 }

@@ -9,6 +9,7 @@ export class GameNetManager {
     numOfGames = 0;
     numOfMJ = 0;
     button = -1;
+    
     connectGameServer(data: any) {
         this.roomServerIp = data.ip + ":" + data.port
         Common.net.connect((data: any) => {

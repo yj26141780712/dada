@@ -16,15 +16,21 @@ const { ccclass, property } = _decorator;
 
 @ccclass('MjGame')
 export class MjGame extends Component {
-    // [1]
-    // dummy = '';
+     
+    @property(Node)
+    public preNode:Node = null;
 
-    // [2]
-    // @property
-    // serializableDummy = 0;
+    @property(Node)
+    public gameNode:Node = null;
 
     start() {
         // [3]
+        this.preNode.active = true;
+        this.gameNode.active = false;
+        this.onGameBegin();
+    }
+
+    onGameBegin(){
 
     }
 
