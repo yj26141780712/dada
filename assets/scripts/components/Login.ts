@@ -67,6 +67,8 @@ export class Login extends Component {
     update(deltaTime: number) {
         // this.tipn
     }
+
+
 }
 
 /**

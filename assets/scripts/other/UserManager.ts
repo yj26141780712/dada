@@ -91,11 +91,11 @@ export class UserManager {
         }, Common.hallIP).then(res => {
             if (res.status === 200 && res.data) {
                 const user = res.data;
-                if (user.userid) { // 角色已经创建
+                if (!user.userid) { // 角色已经创建
                     //跳转到角色创建场景
                     director.loadScene('createRole');
                 } else {
-                    this.userInfo.account = res.data.account;
+                    // this.userInfo.account = res.data.account;
                     this.userInfo.userId = res.data.userid;
                     this.userInfo.userName = res.data.name;
                     this.userInfo.lv = res.data.lv;
