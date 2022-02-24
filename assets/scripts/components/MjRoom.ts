@@ -1,7 +1,7 @@
 
 import { _decorator, Component, Node, Label } from 'cc';
 import { Common } from '../other/Common';
-import { Seat } from '../prefabs/Seat';
+import { RoomSeat, Seat } from '../prefabs/Seat';
 const { ccclass, property } = _decorator;
 
 /**
@@ -27,6 +27,9 @@ export class MjRoom extends Component {
 
     @property(Node)
     public preSeatNodes: Node[] = [];
+
+    @property(Node)
+    public gameSeatNodes: Node[] = [];
 
     lblTime: Label;
     lblRoomNo: Label;
@@ -57,25 +60,11 @@ export class MjRoom extends Component {
         }
     }
 
-    initSingleSeat(seat: any) {
-        var index = cc.vv.gameNetMgr.getLocalIndex(seat.seatindex);
-        var isOffline = !seat.online;
-        var isZhuang = seat.seatindex == cc.vv.gameNetMgr.button;
-
-        console.log("isOffline:" + isOffline);
-
-        this._seats[index].setInfo(seat.name, seat.score);
-        this._seats[index].setReady(seat.ready);
-        this._seats[index].setOffline(isOffline);
-        this._seats[index].setID(seat.userid);
-        this._seats[index].voiceMsg(false);
-
-        this._seats2[index].setInfo(seat.name, seat.score);
-        this._seats2[index].setZhuang(isZhuang);
-        this._seats2[index].setOffline(isOffline);
-        this._seats2[index].setID(seat.userid);
-        this._seats2[index].voiceMsg(false);
-        this._seats2[index].refreshXuanPaiState();
+    initSingleSeat(seat: RoomSeat) {
+        var index = Common.gameNetManager.getLocalIndex(seat.seatindex);
+        this.preSeats[index].init(seat);
+        this.gameSeats[index].init(seat);
+        // this.preSeats[index].refreshXuanPaiState();
     }
 
     initEventHandlers() {

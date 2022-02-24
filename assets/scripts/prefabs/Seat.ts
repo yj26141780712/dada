@@ -1,6 +1,17 @@
 
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, Label, SpriteFrame } from 'cc';
 const { ccclass, property } = _decorator;
+
+export interface RoomSeat {
+    seatindex: number;
+    userName: string;
+    score: 0;
+    dayingjia: boolean;
+    isOffline: boolean;
+    isReady: boolean;
+    isZhuang: boolean;
+    userId: number;
+}
 
 /**
  * Predefined variables
@@ -13,18 +24,48 @@ const { ccclass, property } = _decorator;
  * ManualUrl = https://docs.cocos.com/creator/3.4/manual/zh/
  *
  */
- 
+
 @ccclass('Seat')
 export class Seat extends Component {
-    // [1]
-    // dummy = '';
 
-    // [2]
-    // @property
-    // serializableDummy = 0;
+    @property(Node)
+    public readyNode: Node = null;
 
-    start () {
+    @property(Node)
+    public offLineNode: Node = null;
+
+    @property(Node)
+    public zhuangNode: Node = null;
+
+    @property(Node)
+    public nameNode: Node = null;
+
+    @property(Node)
+    public scoreNode: Node = null;
+
+    @property(Node)
+    public voicemsgNode: Node = null;
+
+    seatindex: number;
+    seat: RoomSeat;
+    start() {
         // [3]
+
+    }
+
+    init(seat: RoomSeat) {
+        this.seat = { ...seat };
+        this.nameNode.getComponent(Label).string = this.seat.score.toString();
+        this.scoreNode.getComponent(Label).string = this.seat.score.toString();
+        this.readyNode.active = this.seat.isReady;
+        this.offLineNode.active = this.seat.isOffline;
+        this.zhuangNode.active = this.seat.isZhuang;
+        this.voicemsgNode.active = false;
+    }
+
+    onIconClicked() {
+        //点击头像显示用户信息窗口
+        console.log('我点击了头像');
     }
 
     // update (deltaTime: number) {

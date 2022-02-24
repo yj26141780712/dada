@@ -8,6 +8,7 @@ export interface ServerInfo {
 const URL = DEV ? "http://localhost:9000/" : "http://localhost:9000/";
 
 export class Http {
+
     get(path: string, data?: any, extraUrl?: string) {
         let str = '';
         let i = 0;
@@ -18,6 +19,7 @@ export class Http {
         path = str ? `${path}${str}` : path;
         return axios.get(`${extraUrl || URL}${path}`);
     }
+
     post(path: string, data: any, extraUrl?: string) {
         return axios.post(`${extraUrl || URL}${path}`, data);
     }
