@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, setDisplayStats } from 'cc';
 const { ccclass, property } = _decorator;
 
 /**
@@ -25,13 +25,19 @@ export class MjGame extends Component {
 
     start() {
         // [3]
+        setDisplayStats(false);
         this.preNode.active = true;
         this.gameNode.active = false;
         this.onGameBegin();
     }
 
     onGameBegin(){
+        this.preNode.active =false;
+        this.gameNode.active = true;
+    }
 
+    onMJClicked() {
+        
     }
 
     // update (deltaTime: number) {
