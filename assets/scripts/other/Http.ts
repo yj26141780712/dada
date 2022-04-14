@@ -5,7 +5,7 @@ export interface ServerInfo {
     version: string;
 }
 
-const URL = DEV ? "http://localhost:9000/" : "http://localhost:9000/";
+const URL = DEV ? "http://120.79.100.219:9000/" : "http://localhost:9000/";
 
 export class Http {
 
@@ -17,6 +17,7 @@ export class Http {
             i++;
         }
         path = str ? `${path}${str}` : path;
+        console.log(path);
         return axios.get(`${extraUrl || URL}${path}`);
     }
 

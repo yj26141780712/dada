@@ -74,6 +74,7 @@ export class Loading extends Component {
         console.log('检查程序版本');
         this.stateStr = '正在连接服务器...';
         Common.http.get('get_serverinfo').then((res) => {
+            console.log(res);
             if (res.status === 200 && res.data) {
                 Common.hallIP = `http://${res.data.hall}/`;
                 if (res.data.version !== Common.VERSION) {

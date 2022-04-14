@@ -2,12 +2,12 @@
   "ver": "1.1.35",
   "importer": "prefab",
   "imported": true,
-  "uuid": "0b71959a-5ebd-42d8-9f38-3e49e452aea9",
+  "uuid": "5f21a742-1808-4599-8f8d-2874108260ef",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "Radio"
+    "syncNodeName": "Checkbox"
   }
 }

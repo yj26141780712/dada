@@ -1,4 +1,5 @@
 import { director, sys } from "cc";
+import { common } from "protobufjs";
 import { Common } from "./Common";
 
 /**
@@ -54,6 +55,7 @@ export interface Userinfo {
 export class UserManager {
     hallUrl: string;
     userInfo: Userinfo = {};
+
     onAuth(ret: any) {
         console.log(ret);
         if (ret.errcode !== 0) {
@@ -110,6 +112,18 @@ export class UserManager {
                 }
             } else {
                 console.log('登录失败,', res.statusText);
+            }
+        })
+    }
+
+    create(name: string) {
+        Common.http.get('create_user', {
+            account:this.userInfo.account,
+            sign:this.userInfo.sign,
+            name
+        }, Common.hallIP).then(res => {
+            if(res.status === 200 &&res.data){
+
             }
         })
     }

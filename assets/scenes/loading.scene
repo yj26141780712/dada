@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Scene",
-    "_name": "loading1",
+    "_name": "loading",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -456,7 +456,7 @@
       "__id__": 11
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 15
@@ -667,7 +667,7 @@
       "__id__": 11
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 21
@@ -783,7 +783,7 @@
         "__id__": 31
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 39

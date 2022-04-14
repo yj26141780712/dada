@@ -2,12 +2,12 @@
   "ver": "1.1.35",
   "importer": "prefab",
   "imported": true,
-  "uuid": "0b71959a-5ebd-42d8-9f38-3e49e452aea9",
+  "uuid": "c4e44f82-137c-44ee-9aa8-bf844f552cab",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "Radio"
+    "syncNodeName": "RadioGroup"
   }
 }

@@ -1,5 +1,7 @@
 
 import { _decorator, Component, Node, SpriteFrame } from 'cc';
+import { Radio } from './Radio';
+import { RadioGroup } from './RadioGroup';
 const { ccclass, property } = _decorator;
 
 /**
@@ -25,10 +27,14 @@ export class RadioButton extends Component {
 
     checked = false;
 
-    start() {
+    groupId:number;
 
+    start() {
+        const group = this.node.getComponent(RadioGroup);
+        console.log(group);
     }
 
+   
     // update (deltaTime: number) {
     //     // [4]
     // }
