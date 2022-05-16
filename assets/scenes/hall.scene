@@ -337,7 +337,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 360,
+    "_orthoHeight": 369.6750902527076,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -4168,7 +4168,7 @@
     "propertyPath": [
       "_active"
     ],
-    "value": true
+    "value": false
   },
   {
     "__type__": "cc.Node",
@@ -4289,7 +4289,7 @@
     "propertyPath": [
       "_active"
     ],
-    "value": true
+    "value": false
   },
   {
     "__type__": "cc.Node",
@@ -4324,7 +4324,7 @@
         "__id__": 417
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 422

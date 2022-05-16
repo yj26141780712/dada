@@ -11,10 +11,10 @@
     "lodash-es": "^4.17.21",
     "protobufjs": "^6.11.2",
     "rxjs": "^7.5.4",
-    "socket.io": "^4.4.1",
-    "socket.io-client": "^4.4.1"
+    "socket.io-client": "^1.4.6"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.6"
+    "@types/lodash-es": "^4.17.6",
+    "@types/socket.io-client": "^3.0.0"
   }
 }

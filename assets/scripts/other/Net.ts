@@ -10,8 +10,7 @@ export class Net {
 
     connect(success: (data: any) => void, fail: () => void) {
         const socket = io(this.ip);
-        socket.on("connect", (data: any) => {
-            success(data);
+        socket.on("connect", () => {
             console.log(socket.id); // x8WIv7-mJelg7on_ALbx
         });
 

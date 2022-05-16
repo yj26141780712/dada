@@ -57,7 +57,8 @@ export class Login extends Component {
 
     visitorLogin() {
         //游客登录成功跳转到游戏场景
-        Common.userManager.gusetLogin();
+        //Common.userManager.gusetLogin();
+        Common.userManager.userlogin('user1');
     }
 
     wechatLogin() {

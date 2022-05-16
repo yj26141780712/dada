@@ -86,6 +86,17 @@ export class UserManager {
         })
     }
 
+    userlogin(account:string) {
+        Common.http.get('auth',{
+            account,
+            password:account
+        }).then(res=>{
+            if(res.status === 200 && res.data) {
+                this.onAuth(res.data);
+            }
+        })
+    }
+
     login() {
         Common.http.get('login', {
             account: this.userInfo.account,
