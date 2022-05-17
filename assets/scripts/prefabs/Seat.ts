@@ -5,12 +5,25 @@ const { ccclass, property } = _decorator;
 export interface RoomSeat {
     seatindex: number;
     userName: string;
+    name: string;
     score: 0;
     dayingjia: boolean;
-    isOffline: boolean;
+    isOnline: boolean;
     isReady: boolean;
     isZhuang: boolean;
     userId: number;
+    holds: any[];
+    folds: any[];
+    pengs: any[];
+    angangs: any[];
+    diangangs: any[];
+    wangangs: any[];
+    dingque: any;
+    hued: any;
+    iszimo: boolean;
+    huinfo: any;
+    huanpais: any[];
+    game_holds_push: any[];
 }
 
 /**

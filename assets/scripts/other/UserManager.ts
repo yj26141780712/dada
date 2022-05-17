@@ -55,6 +55,7 @@ export interface Userinfo {
 export class UserManager {
     hallUrl: string;
     userInfo: Userinfo = {};
+    oldRoomId: string;
 
     onAuth(ret: any) {
         console.log(ret);
@@ -118,11 +119,11 @@ export class UserManager {
 
     create(name: string) {
         Common.http.get('create_user', {
-            account:this.userInfo.account,
-            sign:this.userInfo.sign,
+            account: this.userInfo.account,
+            sign: this.userInfo.sign,
             name
         }, Common.hallIP).then(res => {
-            if(res.status === 200 &&res.data){
+            if (res.status === 200 && res.data) {
 
             }
         })
