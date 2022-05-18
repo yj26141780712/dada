@@ -95,4 +95,8 @@ export class MahjongManager {
     getFoldPre(localIndex: number) {
         return this.foldpPres[localIndex];
     }
+
+    getSide(localIndex: number) {
+        return this.sides[localIndex];
+    }
 }

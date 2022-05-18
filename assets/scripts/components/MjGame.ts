@@ -158,7 +158,27 @@ export class MjGame extends Component {
             }
         }
 
-        if ()
+        this.gameNode.active = true;
+        this.preNode.active = false;
+        this.initMahjongs();
+        const seats = Common.gameNetManager.seats;
+        seats.forEach((seat, index) => {
+            const localIndex = Common.gameNetManager.getLocalIndex(index);
+            if (localIndex != 0) {
+                this.initOtherMahjongs(seat);
+            }
+            if (index === Common.gameNetManager.turn) {
+                this.initMopai(index, -1);
+            } else {
+                this.initMopai(index, null);
+            }
+        });
+        this.showChupai();
+        if (Common.gameNetManager.curAction !== null) {
+            this.showAction(Common.gameNetManager.curAction);
+            Common.gameNetManager.curAction = null;
+        }
+        // this.checkQueYiMen()
     }
 
     hideOptions() {
@@ -196,28 +216,204 @@ export class MjGame extends Component {
         }
     }
 
+    initMopai(seatIndex: number, pai: number) {
+        const localIndex = Common.gameNetManager.getLocalIndex(seatIndex);
+        const side = Common.mahjongManager.getSide(localIndex);
+        const pre = Common.mahjongManager.getFoldPre(localIndex);
+        const gameNode = this.node.getChildByName('game');
+        const sideNode = gameNode.getChildByName(side);
+        const holds = sideNode.getChildByName('holds');
+        const lastIndex = this.getMjIndex(side, 13);
+        const nc = holds.children[lastIndex];
+        if (pai === null) {
+            nc.active = false;
+        } else if (pai >= 0) {
+            nc.active = true;
+            const sprite = nc.getComponent(Sprite);
+            sprite.spriteFrame = Common.mahjongManager.getSpriteFrameByIndex(pre, pai);
+        } else {
+            nc.active = true;
+            const sprite = nc.getComponent(Sprite);
+            sprite.spriteFrame = Common.mahjongManager.getHoldsEmptySpriteFrame(side);
+        }
+    }
+
+    showChupai() {
+        const pai = Common.gameNetManager.chupai;
+        if (pai >= 0) {
+            const localIndex = Common.gameNetManager.getLocalIndex(Common.gameNetManager.turn);
+            const sprite = this.chupaiSprite[localIndex];
+            sprite.spriteFrame = Common.mahjongManager.getSpriteFrameByIndex('M_', pai);
+            sprite.node.active = true;
+        }
+    }
+
+    showAction(data: any) {
+        if (this.ops.active) {
+            this.hideOptions();
+        }
+        if (data && (data.hu || data.gang || data.peng)) {
+            this.ops.active = true;
+            if (data.hu) {
+                this.addOption('btnHu', data.pai);
+            }
+            if (data.peng) {
+                this.addOption('btnPeng', data.pai);
+            }
+            if (data.gang) {
+                for (let i = 0; i < data.gangpai.length; i++) {
+                    const gp = data.gangpai[i];
+                    this.addOption('btnGang', gp);
+                }
+            }
+        }
+    }
+
+    addOption(btnName: string, pai: number) {
+        for (let i = 0; i < this.ops.children.length; i++) {
+            const child = this.ops.children[i];
+            if (child.name === 'op' && child.active === false) {
+                child.active = true;
+                const sprite = child.getChildByName('opTarget').getComponent(Sprite);
+                const btn = child.getChildByName(btnName);
+                btn.active = true;
+                btn[pai] = pai;
+                return;
+            }
+        }
+    }
+
+    checkQueYiMen() {
+
+    }
+
     onGameHolds = (res: any) => {
         this.initMahjongs();
+        this.checkQueYiMen();
     }
     onGameBegin = (res: any) => {
-        this.preNode.active = false;
-        this.gameNode.active = true;
+        this.beginGame();
     }
-    onGamesync = (res: any) => { }
-    onGameChupai = (res: any) => { }
-    onGameMopai = (res: any) => { }
-    onGameAction = (res: any) => { }
-    onHupai = (res: any) => { }
-    onMjCount = (res: any) => { }
-    onGameNum = (res: any) => { }
-    onGameOver = (res: any) => { }
-    onGameChupaiNotify = (res: any) => { }
-    onGuoNotify = (res: any) => { }
-    onGuoResult = (res: any) => { }
-    onGameDingqueFinish = (res: any) => { }
-    onPengNotify = (res: any) => { }
-    onGangNotify = (res: any) => { }
-    onHangangNotify = (res: any) => { }
+    onGamesync = (res: any) => {
+        this.beginGame();
+    }
+    onGameChupai = (res: any) => {
+        const data = res;
+        this.hideChupai();
+        this.checkQueYiMen();
+        if (data.last !== Common.gameNetManager.seatIndex) {
+            this.initMopai(data.last, null);
+        }
+        if (!Common.replayManager.isReplay() && data.turn !== Common.gameNetManager.seatIndex) {
+            this.initMopai(data.turn, -1);
+        }
+    }
+    onGameMopai = (res: any) => {
+        const data = res;
+        this.hideChupai();
+        const pai = data.pai;
+        const localIndex = Common.gameNetManager.getLocalIndex(data.seatIndex);
+        if (localIndex === 0) {
+            const index = 13;
+            const sprite = this.mjArr[index];
+            this.setSpriteFrameByMjIndex('M_', sprite, pai);
+            sprite.node['mjIndex'] = pai;
+        } else if (Common.replayManager.isReplay()) {
+            this.initMopai(data.seatIndex, pai);
+        }
+    }
+    onGameAction = (res: any) => {
+        this.showAction(res);
+    }
+    onHupai = (res: any) => {
+        const data = res;
+        const seatIndex = data.seatindex;
+        const localIndex = Common.gameNetManager.getLocalIndex(seatIndex);
+        const hupai = this.hupaiTips[localIndex];
+        hupai.active = true;
+        if (localIndex === 0) {
+            this.hideOptions();
+        }
+        const seat = Common.gameNetManager.seats[seatIndex];
+        seat.hued;
+        if (Common.gameNetManager.conf.type === 'xlch') {
+
+        } else {
+
+        }
+    }
+    onMjCount = (res: any) => {
+        const label = this.mjCountlblNode.getComponent(Label);
+        label.string = `剩余${Common.gameNetManager.numOfMJ}张`;
+    }
+    onGameNum = (res: any) => {
+        const label = this.gameCountlblNode.getComponent(Label);
+        label.string = `${Common.gameNetManager.numOfGames}/${Common.gameNetManager.maxNumofGames}`;
+    }
+    onGameOver = (res: any) => {
+        this.gameNode.active = false;
+        this.preNode.active = true;
+    }
+    onGameChupaiNotify = (res: any) => {
+        this.hideChupai();
+        const seatData = res.seatData;
+        if (seatData.seatindex === Common.gameNetManager.seatIndex) {
+            this.initMahjongs();
+        } else {
+            this.initOtherMahjongs(seatData);
+        }
+        this.showChupai();
+        //播放出牌动画
+    }
+    onGuoNotify = (res: any) => {
+        this.hideChupai();
+        this.hideOptions();
+        const seatData = res;
+        if (seatData.seatindex === Common.gameNetManager.seatIndex) {
+            this.initMahjongs();
+        }
+        //播放音乐
+    }
+    onGuoResult = (res: any) => {
+        this.hideOptions();
+    }
+    onGameDingqueFinish = (res: any) => {
+        this.initMahjongs();
+    }
+    onPengNotify = (res: any) => {
+        this.hideChupai();
+        const seatData = res;
+        if (seatData.seatindex === Common.gameNetManager.seatIndex) {
+            this.initMahjongs();
+        } else {
+            this.initOtherMahjongs(seatData);
+        }
+        const localIndex = Common.gameNetManager.getLocalIndex(seatData.seatindex);
+        // 播放音乐 播放动效
+        this.hideOptions();
+    }
+    onGangNotify = (res: any) => {
+        this.hideChupai();
+        const data = res;
+        const seatData = data.seatData;
+        const gangtype = data.gangtype;
+        if (seatData.seatindex === Common.gameNetManager.seatIndex) {
+            this.initMahjongs();
+        } else {
+            this.initOtherMahjongs(seatData);
+        }
+        const localIndex = Common.gameNetManager.getLocalIndex(seatData.seatindex);
+        if (gangtype === 'wangang') {
+            // 播放音乐 播放动效
+        } else {
+            // 播放音乐 播放动效
+        }
+        this.hideOptions();
+    }
+    onHangangNotify = (res: any) => {
+
+        this.hideOptions();
+    }
 
     onMJClicked() {
 
@@ -247,6 +443,43 @@ export class MjGame extends Component {
             sprite.spriteFrame = null;
             sprite.node.active = false;
         }
+    }
+
+    initOtherMahjongs(seat: RoomSeat) {
+        const localIndex = Common.gameNetManager.getLocalIndex(seat.seatindex);
+        if (localIndex === 0) {
+            return;
+        }
+        const side = Common.mahjongManager.getSide(localIndex);
+        const game = this.node.getChildByName('game');
+        const sideNode = game.getChildByName(side);
+        const sideHolds = sideNode.getChildByName('holds');
+        const num = (seat.pengs.length + seat.angangs.length + seat.diangangs.length + seat.wangangs.length) * 3
+        for (let i = 0; i < num; i++) {
+            const index = this.getMjIndex(side, i);
+            sideHolds.children[index].active = false;
+        }
+        const pre = Common.mahjongManager.getFoldPre(localIndex);
+        const holds = this.sortHolds(seat);
+        if (holds && holds.length > 0) {
+            holds.forEach((hold, index) => {
+                const idx = this.getMjIndex(side, index);
+                const sprite = sideHolds.children[idx].getComponent(Sprite);
+                sprite.node.active = true;
+                sprite.spriteFrame = Common.mahjongManager.getSpriteFrameByIndex(pre, hold);
+            });
+            if (holds.length + num === 13) {
+                const lastInx = this.getMjIndex(side, 13);
+                sideHolds.children[lastInx].active = false;
+            }
+        }
+    }
+
+    getMjIndex(side: string, index: number) {
+        if (side === 'right' || side === 'up') {
+            return 13 - index;
+        }
+        return index;
     }
 
     sortHolds(seat: RoomSeat) {
