@@ -4,10 +4,18 @@ import { RoomSeat } from "../prefabs/Seat";
 
 type GameState = 'begin' | 'playing' | 'dingque' | 'huanpai';
 type GameEvent = 'game_begin' | '';
+type GameConfType = 'xlch' | 'xzdd';
+
+interface GameConf {
+    maxGames: number;
+    maxFan: number;
+    hsz: boolean;
+    type: GameConfType;
+}
 
 export class GameNetManager {
     roomId: string; //房间号
-    conf: any; // 玩法conf
+    conf: GameConf; // 玩法conf
     maxNumofGames = 0;
     numOfGames = 0;
     numOfMJ = 0;
@@ -25,6 +33,7 @@ export class GameNetManager {
     huanpaimothod: string;
     curAction: string;
     roomServerIp: string; //房间服务器Id
+    gameEvents: {};
 
     reset() {
 
@@ -483,7 +492,27 @@ export class GameNetManager {
         this.dispatchEvent('gang_notify', { seatData, gangtype });
     }
 
-    dispatchEvent(event: string, data?: any) {
+    addGameEvent(event: string, cb: (res: any) => void) {
+        this.gameEvents[event] = cb;
+    }
 
+    dispatchEvent(event: string, data?: any) {
+        if (this.gameEvents[event]) {
+            this.gameEvents[event](data);
+        }
+    }
+
+    getWanfa() {
+        const conf = this.conf;
+        if (conf && conf.maxGames && conf.maxFan) {
+            const strArr = [];
+            strArr.push(`${conf.maxGames}局`);
+            strArr.push(`${conf.maxFan}番封顶`);
+            if (conf.hsz) {
+                strArr.push('换三张')
+            }
+            return strArr.join(' ');
+        }
+        return '';
     }
 }

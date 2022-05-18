@@ -1,6 +1,7 @@
 import { AnySDKManager } from "./AnySDKManager";
 import { GameNetManager } from "./GameNetManager";
 import { Http } from "./Http";
+import { MahjongManager } from "./MahjongManager";
 import { Net } from "./Net";
 import { UserManager } from "./UserManager";
 
@@ -10,6 +11,7 @@ export class Common {
     static gameNetManager: GameNetManager;
     static anySDKManager: AnySDKManager;
     static userManager: UserManager;
+    static mahjongManager: MahjongManager;
     static http: Http;
     static net: Net;
     static VERSION = VERSION;
@@ -20,5 +22,7 @@ export class Common {
         this.net = new Net();
         this.anySDKManager = new AnySDKManager();
         this.gameNetManager = new GameNetManager();
+        this.mahjongManager = new MahjongManager();
+        this.mahjongManager.init();
     }
 }

@@ -1,5 +1,4 @@
 import { director, sys } from "cc";
-import { common } from "protobufjs";
 import { Common } from "./Common";
 
 /**

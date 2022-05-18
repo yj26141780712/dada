@@ -27,11 +27,11 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 1632
+      "__id__": 1633
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 1633
+      "__id__": 1634
     },
     "_id": "160f3ff7-1946-4540-88ae-5fbe15bad7b7"
   },
@@ -102,6 +102,17 @@
     "_illuminanceHDR": 65000,
     "_illuminance": 65000,
     "_illuminanceLDR": 1.6927083333333335,
+    "_shadowEnabled": false,
+    "_shadowPcf": 0,
+    "_shadowBias": 0.00001,
+    "_shadowNormalBias": 0,
+    "_shadowSaturation": 0.75,
+    "_shadowDistance": 100,
+    "_shadowInvisibleOcclusionRange": 200,
+    "_shadowFixedArea": false,
+    "_shadowNear": 0.1,
+    "_shadowFar": 10,
+    "_shadowOrthoSize": 5,
     "_id": "597uMYCbhEtJQc0ffJlcgA"
   },
   {
@@ -222,7 +233,7 @@
         "__id__": 1580
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 1591
@@ -241,6 +252,9 @@
       },
       {
         "__id__": 1631
+      },
+      {
+        "__id__": 1632
       }
     ],
     "_prefab": null,
@@ -328,7 +342,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 360,
+    "_orthoHeight": 433.66795366795367,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -23043,7 +23057,10 @@
       "b": 124,
       "a": 255
     },
-    "_normalSprite": null,
+    "_normalSprite": {
+      "__uuid__": "bd489e17-6703-43ae-9f9a-f4962e2b5f6a@721ec",
+      "__expectedType__": "cc.SpriteFrame"
+    },
     "_hoverSprite": null,
     "_pressedSprite": null,
     "_disabledSprite": null,
@@ -37501,6 +37518,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -37656,6 +37674,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -37715,6 +37734,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -38490,6 +38510,33 @@
     "_id": "a8X7IFLBdJVZwyz63L1+Ec"
   },
   {
+    "__type__": "8365arDvhhIA4x12ZiNsNOQ",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 7
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "leftAtlas": {
+      "__uuid__": "dc0f12a0-949b-450f-9d67-9f1054b115f8",
+      "__expectedType__": "cc.SpriteAtlas"
+    },
+    "rightAtlas": {
+      "__uuid__": "48bbc34e-d304-4947-a0fc-bba08f27205b",
+      "__expectedType__": "cc.SpriteAtlas"
+    },
+    "myAtlas": {
+      "__uuid__": "ab2500fa-9ff8-4489-a1c7-5febd50136b7",
+      "__expectedType__": "cc.SpriteAtlas"
+    },
+    "upAtlas": {
+      "__uuid__": "c80abbb2-c412-4736-96c6-734930fa9dd9",
+      "__expectedType__": "cc.SpriteAtlas"
+    },
+    "_id": "30mdtd9llAtqIVjNg6iimR"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "fileId": "160f3ff7-1946-4540-88ae-5fbe15bad7b7",
     "nestedPrefabInstanceRoots": [
@@ -38699,19 +38746,19 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 1634
-    },
-    "shadows": {
       "__id__": 1635
     },
-    "_skybox": {
+    "shadows": {
       "__id__": 1636
     },
-    "fog": {
+    "_skybox": {
       "__id__": 1637
     },
-    "octree": {
+    "fog": {
       "__id__": 1638
+    },
+    "octree": {
+      "__id__": 1639
     }
   },
   {
@@ -38764,8 +38811,8 @@
   },
   {
     "__type__": "cc.ShadowsInfo",
-    "_type": 0,
     "_enabled": false,
+    "_type": 0,
     "_normal": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -38780,34 +38827,22 @@
       "b": 76,
       "a": 255
     },
-    "_firstSetCSM": false,
-    "_fixedArea": false,
-    "_pcf": 0,
-    "_bias": 0.00001,
-    "_normalBias": 0,
-    "_near": 0.1,
-    "_far": 10,
-    "_shadowDistance": 100,
-    "_invisibleOcclusionRange": 200,
-    "_orthoSize": 5,
     "_maxReceived": 4,
     "_size": {
       "__type__": "cc.Vec2",
       "x": 512,
       "y": 512
-    },
-    "_saturation": 0.75
+    }
   },
   {
     "__type__": "cc.SkyboxInfo",
-    "_applyDiffuseMap": false,
+    "_envLightingType": 0,
     "_envmapHDR": null,
     "_envmap": null,
     "_envmapLDR": null,
     "_diffuseMapHDR": null,
     "_diffuseMapLDR": null,
     "_enabled": false,
-    "_useIBL": false,
     "_useHDR": true
   },
   {
