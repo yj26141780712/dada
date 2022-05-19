@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, SystemEventType, SystemEvent, EventTouch } from 'cc';
+import { _decorator, Component, Node, EventTouch } from 'cc';
 import { Radio } from './Radio';
 const { ccclass, property } = _decorator;
 
@@ -14,7 +14,7 @@ const { ccclass, property } = _decorator;
  * ManualUrl = https://docs.cocos.com/creator/3.4/manual/zh/
  *
  */
- 
+
 @ccclass('RadioGroup')
 export class RadioGroup extends Component {
     // [1]
@@ -25,33 +25,34 @@ export class RadioGroup extends Component {
     // serializableDummy = 0;
 
     @property(Node)
-    radioGroups:Node[] = [];
+    radioGroups: Node[] = [];
     checkIndex = 0;
 
-    start () {
+    start() {
         // [3]
-        this.radioGroups.forEach((node,index)=>{
+        this.radioGroups.forEach((node, index) => {
             const radio = node.getComponent(Radio);
             console.log(radio);
             radio.groupIndex = index;
-            radio.groupReset = this.groupReset;   
+            radio.groupReset = this.groupReset;
         })
     }
 
-    groupReset =(gIndex:number)=>{
+    groupReset = (gIndex: number) => {
         this.checkIndex = gIndex;
-        this.radioGroups.forEach((node,index)=>{
-            if(gIndex!==index){
+        this.radioGroups.forEach((node, index) => {
+            if (gIndex !== index) {
                 const radio = node.getComponent(Radio);
-                radio.checked =false;
+                radio.checked = false;
                 radio.refresh();
             }
         })
     }
 
-    onClicked(event:EventTouch){
+    onClicked(event: EventTouch) {
         console.log(event);
     }
+
     // update (deltaTime: number) {
     //     // [4]
     // }

@@ -365,6 +365,7 @@ export class MjGame extends Component {
         this.showChupai();
         //播放出牌动画
     }
+
     onGuoNotify = (res: any) => {
         this.hideChupai();
         this.hideOptions();
@@ -374,12 +375,15 @@ export class MjGame extends Component {
         }
         //播放音乐
     }
+
     onGuoResult = (res: any) => {
         this.hideOptions();
     }
+
     onGameDingqueFinish = (res: any) => {
         this.initMahjongs();
     }
+
     onPengNotify = (res: any) => {
         this.hideChupai();
         const seatData = res;
@@ -392,6 +396,7 @@ export class MjGame extends Component {
         // 播放音乐 播放动效
         this.hideOptions();
     }
+
     onGangNotify = (res: any) => {
         this.hideChupai();
         const data = res;
@@ -410,6 +415,7 @@ export class MjGame extends Component {
         }
         this.hideOptions();
     }
+
     onHangangNotify = (res: any) => {
 
         this.hideOptions();
