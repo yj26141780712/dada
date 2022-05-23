@@ -4,13 +4,23 @@ const { ccclass, property } = _decorator;
 
 export interface RoomSeat {
     seatindex: number;
-    userName: string;
+    name: string;
     score: 0;
     dayingjia: boolean;
-    isOffline: boolean;
-    isReady: boolean;
-    isZhuang: boolean;
-    userId: number;
+    online: boolean;
+    ready: boolean;
+    userid: number;
+    holds: any[];
+    folds: any[];
+    pengs: any[];
+    angangs: any[];
+    diangangs: any[];
+    wangangs: any[];
+    dingque: any;
+    hued: any;
+    iszimo: boolean;
+    huinfo: any;
+    huanpais: any[];
 }
 
 /**
@@ -57,9 +67,9 @@ export class Seat extends Component {
         this.seat = { ...seat };
         this.nameNode.getComponent(Label).string = this.seat.score.toString();
         this.scoreNode.getComponent(Label).string = this.seat.score.toString();
-        this.readyNode.active = this.seat.isReady;
-        this.offLineNode.active = this.seat.isOffline;
-        this.zhuangNode.active = this.seat.isZhuang;
+        this.readyNode.active = this.seat.ready;
+        this.offLineNode.active = !this.seat.online;
+       // this.zhuangNode.active = this.seat.isZhuang;
         this.voicemsgNode.active = false;
     }
 

@@ -1,5 +1,4 @@
 import { director, sys } from "cc";
-import { common } from "protobufjs";
 import { Common } from "./Common";
 
 /**
@@ -49,13 +48,13 @@ export interface Userinfo {
     /**
      * 房间id
      */
-    roomData?: number;
+    roomData?: string;
 }
 
 export class UserManager {
     hallUrl: string;
     userInfo: Userinfo = {};
-
+    oldRoomId: string;
     onAuth(ret: any) {
         console.log(ret);
         if (ret.errcode !== 0) {
@@ -138,4 +137,18 @@ export class UserManager {
             }
         })
     }
+
+    enterRoom(roomId:string) {
+        Common.http.get('enter_private_room',{
+            account:this.userInfo.account,
+            sign:this.userInfo.sign,
+            roomid:roomId
+        },Common.hallIP).then(res=>{
+            if(res.status === 200&&res.data){
+                Common.gameNetManager.connectGameServer(res.data);
+            }
+        })
+    }
+
+
 }

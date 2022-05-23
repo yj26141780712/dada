@@ -29,6 +29,11 @@ export class Hall extends Component {
         //     return;
         // }
         // this.initLabels();
+        console.log(Common.userManager.userInfo)
+        const roomId = Common.userManager.userInfo.roomData;
+        if(roomId){
+            Common.userManager.enterRoom(roomId);
+        }
     }
 
     start() {

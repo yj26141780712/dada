@@ -38,7 +38,7 @@ export class MjRoom extends Component {
     gameSeats: Seat[] = [] // 游戏阶段四个座位
 
     start() {
-        Common.initManager();
+       // Common.initManager();
         // [3]
         this.initView();
         this.initSeats();
