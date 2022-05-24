@@ -102,7 +102,6 @@
     "_illuminanceHDR": 65000,
     "_illuminance": 65000,
     "_illuminanceLDR": 1.6927083333333335,
-    "_id": "597uMYCbhEtJQc0ffJlcgA",
     "_shadowEnabled": false,
     "_shadowPcf": 0,
     "_shadowBias": 0.00001,
@@ -113,7 +112,8 @@
     "_shadowFixedArea": false,
     "_shadowNear": 0.1,
     "_shadowFar": 10,
-    "_shadowOrthoSize": 5
+    "_shadowOrthoSize": 5,
+    "_id": "597uMYCbhEtJQc0ffJlcgA"
   },
   {
     "__type__": "cc.StaticLightSettings",
@@ -248,7 +248,7 @@
         "__id__": 124
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 424
@@ -348,7 +348,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 369.6750902527076,
+    "_orthoHeight": 360,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -1399,6 +1399,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -1523,6 +1524,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -1850,6 +1852,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -5635,6 +5638,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -9871,8 +9875,8 @@
   },
   {
     "__type__": "cc.ShadowsInfo",
-    "_type": 0,
     "_enabled": false,
+    "_type": 0,
     "_normal": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -9896,14 +9900,14 @@
   },
   {
     "__type__": "cc.SkyboxInfo",
+    "_envLightingType": 0,
     "_envmapHDR": null,
     "_envmap": null,
     "_envmapLDR": null,
     "_diffuseMapHDR": null,
     "_diffuseMapLDR": null,
     "_enabled": false,
-    "_useHDR": true,
-    "_envLightingType": 0
+    "_useHDR": true
   },
   {
     "__type__": "cc.FogInfo",

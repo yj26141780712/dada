@@ -31,7 +31,7 @@ export class Login extends Component {
             // const canvas = this.node.getComponent(Canvas);
         }
 
-        AudioManager.playBGM('bgMain.mp3');
+        AudioManager.playMusic('bgMain.mp3');
         // 播放登录场景音乐
 
         //监听是否需要创建角色 如果需要跳转到角色创建场景
@@ -44,7 +44,7 @@ export class Login extends Component {
     initAudio() {
         const audioSource = this.getComponent(AudioSource)!;
         assert(audioSource);
-        game.addPersistRootNode(this.node);
+        console.log(audioSource);
         AudioManager.init(audioSource);
     }
 

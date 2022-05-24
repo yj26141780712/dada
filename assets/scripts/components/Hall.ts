@@ -31,8 +31,8 @@ export class Hall extends Component {
         // this.initLabels();
         console.log(Common.userManager.userInfo)
         const roomId = Common.userManager.userInfo.roomData;
-        if(roomId){
-            Common.userManager.enterRoom(roomId);
+        if (roomId) {
+            // Common.userManager.enterRoom(roomId);
         }
     }
 

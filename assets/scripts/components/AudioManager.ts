@@ -10,17 +10,31 @@ export class AudioManager {
         AudioManager._audioSource = audioSource;
     }
 
-    public static playMusic() {
+    public static playMusic(name: string) {
         const audioSource = AudioManager._audioSource!;
         assert(audioSource, 'AudioManager not inited!');
-        audioSource.play();
+        const path = `sounds/${name}`;
+        let cachedAudioClip = AudioManager._cachedAudioClipMap[path];
+        if (cachedAudioClip) {
+            AudioManager._audioSource.clip = cachedAudioClip;
+            AudioManager._audioSource.play();
+        } else {
+            assetManager.resources?.load(path, AudioClip, (err, clip) => {
+                if (err) {
+                    console.warn(err);
+                    return;
+                }
+                AudioManager._cachedAudioClipMap[path] = clip;
+                AudioManager._audioSource.clip = clip;
+                AudioManager._audioSource.play();
+            });
+        }
     }
 
     public static playSound(name: string) {
         const audioSource = AudioManager._audioSource!;
         assert(audioSource, 'AudioManager not inited!');
-
-        const path = `audio/sound/${name}`;
+        const path = `sounds/${name}`;
         let cachedAudioClip = AudioManager._cachedAudioClipMap[path];
         if (cachedAudioClip) {
             audioSource.playOneShot(cachedAudioClip, 1);
@@ -30,14 +44,11 @@ export class AudioManager {
                     console.warn(err);
                     return;
                 }
-
                 AudioManager._cachedAudioClipMap[path] = clip;
                 audioSource.playOneShot(clip, 1);
             });
         }
     }
 
-    public static playBGM(url: string) {
-        AudioManager._audioSource.play()
-    }
+
 }
