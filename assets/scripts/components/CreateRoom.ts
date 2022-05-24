@@ -1,7 +1,7 @@
 
-import { _decorator, Component, Node, director } from 'cc';
+import { _decorator, Component, director } from 'cc';
 import { Common } from '../other/Common';
-const { ccclass, property } = _decorator;
+const { ccclass } = _decorator;
 
 /**
  * Predefined variables

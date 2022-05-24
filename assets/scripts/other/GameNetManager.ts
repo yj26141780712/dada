@@ -25,8 +25,8 @@ export class GameNetManager {
     huanpaimothod: string;
     curAction: string;
     roomServerIp: string; //房间服务器Id
-    enterRoomReturn:any;
-    gameEvents= {};
+    enterRoomReturn: any;
+    gameEvents = {};
 
     reset() {
 
@@ -363,27 +363,27 @@ export class GameNetManager {
         this.doMopai(this.seatIndex, res);
     }
 
-    onConnectSuccess = ()=>{
+    onConnectSuccess = () => {
         const data = {
-            token:this.enterRoomReturn.token,
-            roomid:this.enterRoomReturn.roomid,
-            time:this.enterRoomReturn.time,
-            sign:this.enterRoomReturn.sign
+            token: this.enterRoomReturn.token,
+            roomid: this.enterRoomReturn.roomid,
+            time: this.enterRoomReturn.time,
+            sign: this.enterRoomReturn.sign
         };
         console.log('sendlogin');
-        Common.net.send('login',data);
+        Common.net.send('login', data);
     }
 
-    onConnectFail = ()=>{
+    onConnectFail = () => {
 
     }
 
-    
+
 
     connectGameServer(data: any) {
         this.enterRoomReturn = data;
-        Common.net.ip = `http://${data.ip}:${data.port}`; 
-        Common.net.connect(this.onConnectSuccess,this.onConnectFail);
+        Common.net.ip = `http://${data.ip}:${data.port}`;
+        Common.net.connect(this.onConnectSuccess, this.onConnectFail);
     }
 
     isRoomOwner() {
@@ -393,6 +393,10 @@ export class GameNetManager {
     //获取用户当前显示索引
     getLocalIndex(index: number) {
         return (index - this.seatIndex + 4) % 4;
+    }
+
+    getSelfData() {
+        return this.seats[this.seatIndex];
     }
 
     getSeatIndexById(userId: number) {
@@ -480,7 +484,7 @@ export class GameNetManager {
         }
     }
 
-    doGang(seatIndex: number, pai: number, gangtype: string) {
+    doGang(seatIndex: number, pai: number, gangtype?: string) {
         const seatData = this.seats[seatIndex];
         if (!gangtype) {
             gangtype = this.getGangType(seatData, pai);
@@ -508,25 +512,25 @@ export class GameNetManager {
         this.dispatchEvent('gang_notify', { seatData, gangtype });
     }
 
-   
+
     addGameEvent(event: string, cb: (res: any) => void) {
         this.gameEvents[event] = cb;
     }
 
     eventCache = [];
-    dispatchCache(){
+    dispatchCache() {
         console.log(this.eventCache);
-        this.eventCache.forEach(x=>{
-            this.dispatchEvent(x[0],x[1]);
+        this.eventCache.forEach(x => {
+            this.dispatchEvent(x[0], x[1]);
         })
     }
 
     dispatchEvent(event: string, data?: any) {
-        if (this.gameEvents&&this.gameEvents[event]) {
-            console.log(event,data);
+        if (this.gameEvents && this.gameEvents[event]) {
+            console.log(event, data);
             this.gameEvents[event](data);
-        } else{
-            this.eventCache.push([event,data]);
+        } else {
+            this.eventCache.push([event, data]);
         }
     }
 

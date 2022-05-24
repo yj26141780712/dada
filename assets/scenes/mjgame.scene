@@ -102,6 +102,17 @@
     "_illuminanceHDR": 65000,
     "_illuminance": 65000,
     "_illuminanceLDR": 1.6927083333333335,
+    "_shadowEnabled": false,
+    "_shadowPcf": 0,
+    "_shadowBias": 0.00001,
+    "_shadowNormalBias": 0,
+    "_shadowSaturation": 0.75,
+    "_shadowDistance": 100,
+    "_shadowInvisibleOcclusionRange": 200,
+    "_shadowFixedArea": false,
+    "_shadowNear": 0.1,
+    "_shadowFar": 10,
+    "_shadowOrthoSize": 5,
     "_id": "597uMYCbhEtJQc0ffJlcgA"
   },
   {
@@ -222,7 +233,7 @@
         "__id__": 1621
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 1632
@@ -814,7 +825,7 @@
         "__id__": 37
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 71
@@ -2088,6 +2099,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -2193,6 +2205,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -36976,31 +36989,26 @@
     "playOnLoad": false,
     "_clips": [
       {
-        "__uuid__": "9b6617fa-666c-4f94-bd20-da3293479fe7",
+        "__uuid__": "cafc4e77-d36d-4740-9722-665f650c80b7",
         "__expectedType__": "cc.AnimationClip"
       },
       {
-        "__uuid__": "22e50178-53d0-4dc6-9bc7-0b58defd59f7",
+        "__uuid__": "49e01f7e-f503-42db-a707-b6c22ca2847b",
         "__expectedType__": "cc.AnimationClip"
       },
       {
-        "__uuid__": "5bff8046-81c3-485c-ac84-2fc491a03be5",
+        "__uuid__": "f32b6b28-c194-4dd3-9080-60ed41a1e420",
         "__expectedType__": "cc.AnimationClip"
       },
       {
-        "__uuid__": "e4c30ae9-10e2-4726-b386-6e24faf39980",
-        "__expectedType__": "cc.AnimationClip"
-      },
-      {
-        "__uuid__": "a0c05fb4-3334-4ae8-803e-a646fdca87a6",
-        "__expectedType__": "cc.AnimationClip"
-      },
-      {
-        "__uuid__": "1904fe71-ac20-4daa-aeda-a5be74a3eb8e",
+        "__uuid__": "6c238d53-9908-4ca3-9825-f26b215209fb",
         "__expectedType__": "cc.AnimationClip"
       }
     ],
-    "_defaultClip": null,
+    "_defaultClip": {
+      "__uuid__": "6c238d53-9908-4ca3-9825-f26b215209fb",
+      "__expectedType__": "cc.AnimationClip"
+    },
     "_id": "ceADq0KIJHULu/D9y0viqI"
   },
   {
@@ -37122,6 +37130,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -38434,6 +38443,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -38610,6 +38620,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -38765,6 +38776,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -38824,6 +38836,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -39931,8 +39944,8 @@
   },
   {
     "__type__": "cc.ShadowsInfo",
-    "_type": 0,
     "_enabled": false,
+    "_type": 0,
     "_normal": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -39947,34 +39960,22 @@
       "b": 76,
       "a": 255
     },
-    "_firstSetCSM": false,
-    "_fixedArea": false,
-    "_pcf": 0,
-    "_bias": 0.00001,
-    "_normalBias": 0,
-    "_near": 0.1,
-    "_far": 10,
-    "_shadowDistance": 100,
-    "_invisibleOcclusionRange": 200,
-    "_orthoSize": 5,
     "_maxReceived": 4,
     "_size": {
       "__type__": "cc.Vec2",
       "x": 512,
       "y": 512
-    },
-    "_saturation": 0.75
+    }
   },
   {
     "__type__": "cc.SkyboxInfo",
-    "_applyDiffuseMap": false,
+    "_envLightingType": 0,
     "_envmapHDR": null,
     "_envmap": null,
     "_envmapLDR": null,
     "_diffuseMapHDR": null,
     "_diffuseMapLDR": null,
     "_enabled": false,
-    "_useIBL": false,
     "_useHDR": true
   },
   {

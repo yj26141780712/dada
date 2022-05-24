@@ -1,55 +1,43 @@
-import { assert, AudioSource, clamp01 } from "cc";
+import { assert, assetManager, AudioClip, AudioSource, clamp01 } from "cc";
 
 export class AudioManager {
 
-    private static _instance: AudioManager;
     private static _audioSource?: AudioSource;
+    private static _cachedAudioClipMap: Record<string, AudioClip> = {};
 
-    static get instance() {
-        if (this._instance) {
-            return this._instance;
-        }
-        this._instance = new AudioManager();
-        return this._instance;
-    }
-
-    /**
-     * 音频管理器初始化
-     * @param audioSource 音频组件
-     */
-    init(audioSource: AudioSource) {
+    // init AudioManager in GameRoot component.
+    public static init(audioSource: AudioSource) {
         AudioManager._audioSource = audioSource;
     }
 
-    /**
-     * 播放音乐
-     * @param loop 是否循环播放
-     */
-    playMusic(loop: boolean) {
-        console.log(AudioManager._audioSource);
-        const audioSource = AudioManager._audioSource;
-        assert(audioSource, 'audioManager not init!');
-        audioSource.loop = loop;
-        if (!audioSource.playing) {
-            audioSource.play();
+    public static playMusic() {
+        const audioSource = AudioManager._audioSource!;
+        assert(audioSource, 'AudioManager not inited!');
+        audioSource.play();
+    }
+
+    public static playSound(name: string) {
+        const audioSource = AudioManager._audioSource!;
+        assert(audioSource, 'AudioManager not inited!');
+
+        const path = `audio/sound/${name}`;
+        let cachedAudioClip = AudioManager._cachedAudioClipMap[path];
+        if (cachedAudioClip) {
+            audioSource.playOneShot(cachedAudioClip, 1);
+        } else {
+            assetManager.resources?.load(path, AudioClip, (err, clip) => {
+                if (err) {
+                    console.warn(err);
+                    return;
+                }
+
+                AudioManager._cachedAudioClipMap[path] = clip;
+                audioSource.playOneShot(clip, 1);
+            });
         }
     }
 
-    /**
-     * 播放音效
-     * @param name 音效名称
-     * @param volumeScale 播放音量倍数
-     */
-    playSound(name: string, volumeScale: number) {
-
+    public static playBGM(url: string) {
+        AudioManager._audioSource.play()
     }
-
-    setMusicVolume(flag: number) {
-        const audioSource = AudioManager._audioSource;
-        assert(audioSource, 'audioManager not init!');
-        flag = clamp01(flag);
-        audioSource.volume = flag;
-    }
-
-
 }

@@ -2,9 +2,9 @@
   "name": "dadaDemo",
   "type": "3d",
   "uuid": "cf1f1b34-2873-4c63-8da4-dfa482752c8b",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "creator": {
-    "version": "3.4.0"
+    "version": "3.5.0"
   },
   "dependencies": {
     "axios": "^0.26.0",

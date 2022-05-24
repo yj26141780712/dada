@@ -1,9 +1,8 @@
 
-import { _decorator, Component, Node, setDisplayStats, Label, Sprite, EventMouse, } from 'cc';
+import { _decorator, Component, Node, setDisplayStats, Label, Sprite, EventMouse, Button, Animation, AudioSource, assert, game } from 'cc';
 import { Common } from '../other/Common';
-import { GameNetManager } from '../other/GameNetManager';
-import { Net } from '../other/Net';
 import { RoomSeat } from '../prefabs/Seat';
+import { AudioManager } from './AudioManager';
 const { ccclass, property } = _decorator;
 
 /**
@@ -36,10 +35,11 @@ export class MjGame extends Component {
     @property(Node)
     public wanfaNode: Node;
 
-
-
     @property(Node)
     list: Node[] = [];
+
+    @property(Animation)
+    playEfxs: Animation[] = [];
 
     mjArr: Sprite[] = [];
     ops: Node;
@@ -49,20 +49,29 @@ export class MjGame extends Component {
     hupaiLists: Node[] = [];
     // playEfxs: Animation[] = [];
     opts = [];
+
+
+
     onLoad() {
-        console.log(123);
-
-    }
-
-    start() {
-        // [3]
-        setDisplayStats(false);
+        this.initAudio();
         this.initView();
         this.initEventHandlers();
         this.gameNode.active = false;
         this.preNode.active = true;
         this.initWanfa();
         this.beginGame();
+    }
+
+    start() {
+        // [3]
+        setDisplayStats(false);
+    }
+
+    initAudio() {
+        const audioSource = this.getComponent(AudioSource)!;
+        assert(audioSource);
+        game.addPersistRootNode(this.node);
+        AudioManager.init(audioSource);
     }
 
     initView() {
@@ -83,6 +92,7 @@ export class MjGame extends Component {
             const sideNode = this.gameNode.getChildByName(side);
             this.hupaiTips.push(sideNode.getChildByName('hupai'));
             this.hupaiLists.push(sideNode.getChildByName('hupailist'));
+            this.playEfxs.push(sideNode.getChildByName('play_efx').getComponent(Animation));
             // hupai 动画
             this.chupaiSprite.push(sideNode.getChildByName('chupai').children[0].getComponent(Sprite));
             const opt = sideNode.getChildByName('opt');
@@ -95,18 +105,13 @@ export class MjGame extends Component {
             this.opts.push(data);
         }
         const ops = this.gameNode.getChildByName('ops');
-        console.log(ops);
         this.ops = ops;
         this.hideOptions();
-        console.log('chupai');
         this.hideChupai();
-        console.log('initEnd');
     }
 
     initEventHandlers() {
-        console.log('initEventHandlers')
         const manager = Common.gameNetManager;
-        console.log(manager.addGameEvent);
         manager.addGameEvent('game_holds', this.onGameHolds);
         manager.addGameEvent('game_begin', this.onGameBegin);
         manager.addGameEvent('game_sync', this.onGamesync);
@@ -124,8 +129,6 @@ export class MjGame extends Component {
         manager.addGameEvent('peng_notify', this.onPengNotify);
         manager.addGameEvent('gang_notify', this.onGangNotify);
         manager.addGameEvent('hangang_notify', this.onHangangNotify);
-        console.log('完成事件添加')
-        //Common.gameNetManager.dispatchCache();
     }
 
     initWanfa() {
@@ -152,12 +155,12 @@ export class MjGame extends Component {
                 }
             }
         }
+
         this.hideChupai();
         this.hideOptions();
         const sides = ['right', 'up', 'left'];
         const gameNode = this.node.getChildByName('game');
-        console.log('sides');
-        console.log(Common.mahjongManager.holdsEmpty);
+
         for (let i = 0; i < sides.length; i++) {
             const sideNode = gameNode.getChildByName(sides[i]);
             const holds = sideNode.getChildByName('holds');
@@ -173,6 +176,7 @@ export class MjGame extends Component {
         this.preNode.active = false;
         this.initMahjongs();
         const seats = Common.gameNetManager.seats;
+
         seats.forEach((seat, index) => {
             const localIndex = Common.gameNetManager.getLocalIndex(index);
             if (localIndex != 0) {
@@ -183,14 +187,14 @@ export class MjGame extends Component {
                     this.initMopai(index, null);
                 }
             }
-
         });
+
         this.showChupai();
         if (Common.gameNetManager.curAction !== null) {
             this.showAction(Common.gameNetManager.curAction);
             Common.gameNetManager.curAction = null;
         }
-        // this.checkQueYiMen()
+        this.checkQueYiMen()
     }
 
     hideOptions() {
@@ -229,7 +233,6 @@ export class MjGame extends Component {
     }
 
     initMopai(seatIndex: number, pai: number) {
-        console.log('initMopai');
         const localIndex = Common.gameNetManager.getLocalIndex(seatIndex);
         const side = Common.mahjongManager.getSide(localIndex);
         const pre = Common.mahjongManager.getFoldPre(localIndex);
@@ -252,7 +255,6 @@ export class MjGame extends Component {
     }
 
     showChupai() {
-        console.log('显示出牌');
         const pai = Common.gameNetManager.chupai;
         if (pai >= 0) {
             const localIndex = Common.gameNetManager.getLocalIndex(Common.gameNetManager.turn);
@@ -298,16 +300,61 @@ export class MjGame extends Component {
     }
 
     checkQueYiMen() {
-
+        if (Common.gameNetManager.conf == null || Common.gameNetManager.conf.type != "xlch" || !Common.gameNetManager.getSelfData().hued) {
+            const dingque = Common.gameNetManager.dingque;
+            let hasQue = false;
+            if (Common.gameNetManager.seatIndex == Common.gameNetManager.turn) {
+                for (var i = 0; i < this.mjArr.length; ++i) {
+                    const sprite = this.mjArr[i];
+                    const mjIndex = sprite.node['mjIndex'];
+                    if (mjIndex !== null) {
+                        var type = Common.mahjongManager.getTypeByIndex(mjIndex);
+                        if (type == dingque) {
+                            hasQue = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            for (var i = 0; i < this.mjArr.length; ++i) {
+                const sprite = this.mjArr[i];
+                const mjIndex = sprite.node['mjIndex'];
+                if (mjIndex !== null) {
+                    const type = Common.mahjongManager.getTypeByIndex(mjIndex);
+                    if (hasQue && type != dingque) {
+                        sprite.node.getComponent(Button).interactable = false;
+                    }
+                    else {
+                        sprite.node.getComponent(Button).interactable = true;
+                    }
+                }
+            }
+        }
+        else {
+            if (Common.gameNetManager.seatIndex == Common.gameNetManager.turn) {
+                for (var i = 0; i < 14; ++i) {
+                    var sprite = this.mjArr[i];
+                    if (sprite.node.active == true) {
+                        sprite.node.getComponent(Button).interactable = i == 13;
+                    }
+                }
+            }
+            else {
+                for (var i = 0; i < 14; ++i) {
+                    var sprite = this.mjArr[i];
+                    if (sprite.node.active == true) {
+                        sprite.node.getComponent(Button).interactable = true;
+                    }
+                }
+            }
+        }
     }
 
     onGameHolds = (res: any) => {
-        console.log('onGameHolds');
         this.initMahjongs();
         this.checkQueYiMen();
     }
     onGameBegin = (res: any) => {
-        console.log('onGameBegin');
         this.beginGame();
     }
     onGamesync = (res: any) => {
@@ -339,7 +386,6 @@ export class MjGame extends Component {
         }
     }
     onGameAction = (res: any) => {
-        console.log('onGameAction')
         this.showAction(res);
     }
     onHupai = (res: any) => {
@@ -354,10 +400,38 @@ export class MjGame extends Component {
         const seat = Common.gameNetManager.seats[seatIndex];
         seat.hued;
         if (Common.gameNetManager.conf.type === 'xlch') {
-
+            hupai.getChildByName("sprHu").active = true;
+            hupai.getChildByName("sprZimo").active = false;
+            this.initHupai(localIndex, data.hupai);
+            if (data.iszimo) {
+                if (seat.seatindex == Common.gameNetManager.seatIndex) {
+                    seat.holds.pop();
+                    this.initMahjongs();
+                }
+                else {
+                    this.initOtherMahjongs(seat);
+                }
+            }
         } else {
-
+            hupai.getChildByName("sprHu").active = !data.iszimo;
+            hupai.getChildByName("sprZimo").active = data.iszimo;
+            if (!(data.iszimo && localIndex == 0)) {
+                this.initMopai(seatIndex, data.hupai);
+            }
         }
+        if (Common.replayManager.isReplay() == true && Common.gameNetManager.conf.type != "xlch") {
+            var opt = this.opts[localIndex];
+            opt.node.active = true;
+            opt.sprite.spriteFrame = Common.mahjongManager.getSpriteFrameByIndex("M_", data.hupai);
+        }
+
+        if (data.iszimo) {
+            this.playEfx(localIndex, "play_zimo");
+        }
+        else {
+            this.playEfx(localIndex, "play_hu");
+        }
+        AudioManager.playSound("nv/hu.mp3");
     }
     onMjCount = (res: any) => {
         const label = this.mjCountlblNode.getComponent(Label);
@@ -443,21 +517,16 @@ export class MjGame extends Component {
     }
 
     initMahjongs() {
-        console.log('初始化自己的手牌');
         const seats = Common.gameNetManager.seats;
-        console.log(seats);
         const seat = seats[Common.gameNetManager.seatIndex];
         const holds = this.sortHolds(seat);
         const lackingNum = (seat.pengs.length + seat.angangs.length + seat.diangangs.length + seat.wangangs.length) * 3;
-        console.log(lackingNum);
-        console.log(this.mjArr);
         for (let i = 0; i < holds.length; i++) {
             const mjIndex = holds[i];
             const sprite = this.mjArr[i + lackingNum];
             sprite.node['mjIndex'] = mjIndex;
             //sprite.node.setPosition(new Vec3(0, 0, 0));
             this.setSpriteFrameByMjIndex('M_', sprite, mjIndex);
-            console.log(sprite.node.active)
         }
         for (let i = 0; i < lackingNum; i++) {
             const sprite = this.mjArr[i];
@@ -489,7 +558,6 @@ export class MjGame extends Component {
         }
         const pre = Common.mahjongManager.getFoldPre(localIndex);
         const holds = this.sortHolds(seat);
-        console.log('holds');
         if (holds && holds.length > 0) {
             holds.forEach((hold, index) => {
                 const idx = this.getMjIndex(side, index);
@@ -502,7 +570,6 @@ export class MjGame extends Component {
                 sideHolds.children[lastInx].active = false;
             }
         }
-        console.log('其他手牌结束')
     }
 
     getMjIndex(side: string, index: number) {
@@ -536,24 +603,16 @@ export class MjGame extends Component {
         sprite.node.active = true;
     }
 
+    playEfx(index: number, name: string) {
+        this.playEfxs[index].node.active = true;
+        this.playEfxs[index].play(name);
+    }
+
     ontest() {
-        const myself = this.gameNode.getChildByName('myself');
-        console.log(myself);
-        const holds = myself.getChildByName('holds');
-        console.log(holds);
-        const children = holds.children;
-        console.log(children);
-        console.log()
-        children[13].active = true;
-        console.log(children[12].getComponent(Sprite).spriteFrame)
-        console.log(children[13].getComponent(Sprite).spriteFrame)
-        console.log(Common.net);
-        console.log(Common.userManager.userInfo)
+
     }
 
     onMjClicked(event: EventMouse) {
-        console.log(this);
-        console.log(Common.gameNetManager);
         if (Common.gameNetManager.isHuanSanZhang) {
             this.node.emit("mj_clicked", event.target);
             return;
@@ -585,8 +644,7 @@ export class MjGame extends Component {
     }
 
     //出牌
-    shoot = (mjId: number)=> {
-        console.log(Common.net);
+    shoot = (mjId: number) => {
         if (mjId == null) {
             return;
         }

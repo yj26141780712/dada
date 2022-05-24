@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, director, setDisplayStats, sys } from 'cc';
+import { _decorator, Component, Node, director, setDisplayStats, sys, AudioSource, assert, game } from 'cc';
 import { Common } from '../other/Common';
 import { AudioManager } from './AudioManager';
 const { ccclass, property } = _decorator;
@@ -21,20 +21,31 @@ export class Login extends Component {
     @property(Node)
     public btnVisitorNode: Node = null;
 
+
+
     password = '';
 
     onLoad() {
+        this.initAudio();
         if (!sys.isNative && sys.isMobile) {
             // const canvas = this.node.getComponent(Canvas);
         }
 
+        AudioManager.playBGM('bgMain.mp3');
         // 播放登录场景音乐
-        AudioManager.instance.playMusic(true);
+
         //监听是否需要创建角色 如果需要跳转到角色创建场景
 
         // if (!sys.isNative || sys.os === sys.OS.WINDOWS) {
         //     this.btnVisitorNode.active = false;
         // }
+    }
+
+    initAudio() {
+        const audioSource = this.getComponent(AudioSource)!;
+        assert(audioSource);
+        game.addPersistRootNode(this.node);
+        AudioManager.init(audioSource);
     }
 
 
