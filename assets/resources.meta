@@ -12,7 +12,8 @@
     "compressionType": {},
     "isRemoteBundle": {
       "wechatgame": true,
-      "web-desktop": true
+      "windows": true,
+      "android": true
     }
   }
 }

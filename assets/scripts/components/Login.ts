@@ -21,8 +21,6 @@ export class Login extends Component {
     @property(Node)
     public btnVisitorNode: Node = null;
 
-
-
     password = '';
 
     onLoad() {
@@ -31,7 +29,7 @@ export class Login extends Component {
             // const canvas = this.node.getComponent(Canvas);
         }
 
-        AudioManager.playMusic('bgMain.mp3');
+        AudioManager.playMusic('bgMain');
         // 播放登录场景音乐
 
         //监听是否需要创建角色 如果需要跳转到角色创建场景
@@ -44,7 +42,6 @@ export class Login extends Component {
     initAudio() {
         const audioSource = this.getComponent(AudioSource)!;
         assert(audioSource);
-        console.log(audioSource);
         AudioManager.init(audioSource);
     }
 

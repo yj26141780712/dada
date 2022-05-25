@@ -22,17 +22,9 @@ export class Hall extends Component {
     public btnCreateRoomNode: Node = null;
 
     onLoad() {
-        console.log(123);
-        // Common.initManager();
-        // if (!Common.http) {
-        //     director.loadScene('loading');
-        //     return;
-        // }
-        // this.initLabels();
-        console.log(Common.userManager.userInfo)
         const roomId = Common.userManager.userInfo.roomData;
         if (roomId) {
-            // Common.userManager.enterRoom(roomId);
+
         }
     }
 

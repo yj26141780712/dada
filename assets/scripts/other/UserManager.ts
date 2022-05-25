@@ -85,12 +85,12 @@ export class UserManager {
         })
     }
 
-    userlogin(account:string) {
-        Common.http.get('auth',{
+    userlogin(account: string) {
+        Common.http.get('auth', {
             account,
-            password:account
-        }).then(res=>{
-            if(res.status === 200 && res.data) {
+            password: account
+        }).then(res => {
+            if (res.status === 200 && res.data) {
                 this.onAuth(res.data);
             }
         })
@@ -128,23 +128,23 @@ export class UserManager {
 
     create(name: string) {
         Common.http.get('create_user', {
-            account:this.userInfo.account,
-            sign:this.userInfo.sign,
+            account: this.userInfo.account,
+            sign: this.userInfo.sign,
             name
         }, Common.hallIP).then(res => {
-            if(res.status === 200 &&res.data){
+            if (res.status === 200 && res.data) {
 
             }
         })
     }
 
-    enterRoom(roomId:string) {
-        Common.http.get('enter_private_room',{
-            account:this.userInfo.account,
-            sign:this.userInfo.sign,
-            roomid:roomId
-        },Common.hallIP).then(res=>{
-            if(res.status === 200&&res.data){
+    enterRoom(roomId: string) {
+        Common.http.get('enter_private_room', {
+            account: this.userInfo.account,
+            sign: this.userInfo.sign,
+            roomid: roomId
+        }, Common.hallIP).then(res => {
+            if (res.status === 200 && res.data) {
                 Common.gameNetManager.connectGameServer(res.data);
             }
         })

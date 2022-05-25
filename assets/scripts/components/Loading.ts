@@ -19,12 +19,6 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Loading')
 export class Loading extends Component {
-    // [1]
-    // dummy = '';
-
-    // [2]
-    // @property
-    // serializableDummy = 0;
 
     @property(Node)
     public tipLabelNode: Node = null;
@@ -48,9 +42,6 @@ export class Loading extends Component {
     }
 
     start() {
-        setDisplayStats(false); //隐藏状态显示
-        // [3] 
-        console.log('loadingstart');
         if (sys.os !== sys.OS.IOS || !sys.isNative) {
             // 1.非IOS系统  2.IOS系统非原生平台
             const sprite = this.splashNode.getComponent(Sprite);
@@ -71,7 +62,6 @@ export class Loading extends Component {
 
 
     checkVersion() {
-        console.log('检查程序版本');
         this.stateStr = '正在连接服务器...';
         Common.http.get('get_serverinfo').then((res) => {
             console.log(res);
@@ -86,8 +76,6 @@ export class Loading extends Component {
         }).catch(err => {
             console.log('服务器连接失败！');
         });
-        // 请求失败
-        // 请求成功
     }
 
     startPreloading() {

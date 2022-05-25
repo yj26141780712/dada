@@ -256,7 +256,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 640,
-      "y": 359.99999999999994,
+      "y": 360.00000000000006,
       "z": 0
     },
     "_lrot": {
@@ -373,7 +373,7 @@
       "__id__": 7
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 11
@@ -1072,7 +1072,7 @@
       "__id__": 7
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 30
@@ -2265,8 +2265,8 @@
     "_target": null,
     "_left": 0,
     "_right": 0,
-    "_top": -5.684341886080802e-14,
-    "_bottom": -5.684341886080802e-14,
+    "_top": 5.684341886080802e-14,
+    "_bottom": 5.684341886080802e-14,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -2290,7 +2290,6 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_audioSource": null,
     "btnVisitorNode": {
       "__id__": 13
     },
