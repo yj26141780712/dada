@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, sys, tween, setDisplayStats, Vec2, Sprite, Color, Label, resources, director } from 'cc';
+import { _decorator, Component, Node, sys, tween, Vec2, Sprite, Color, Label, resources, director } from 'cc';
 import { DEBUG, DEV } from 'cc/env';
 import { Common } from '../other/Common';
 const { ccclass, property } = _decorator;
