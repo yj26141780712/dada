@@ -328,7 +328,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 360.00000000000006,
+    "_orthoHeight": 360,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -364,7 +364,7 @@
       "__id__": 7
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 11
@@ -1259,8 +1259,8 @@
       "__id__": 7
     },
     "component": "",
-    "_componentId": "3d2d4jCwE9C7Jli5KlNkU/I",
-    "handler": "onBtnDownloadClicked",
+    "_componentId": "d9eab1aBPlGiIIEJRlhwAge",
+    "handler": "onClickUpdate",
     "customEventData": ""
   },
   {
@@ -1364,8 +1364,14 @@
     "splashNode": {
       "__id__": 16
     },
-    "alterNode": null,
+    "alterNode": {
+      "__id__": 19
+    },
     "splashShowTime": 3,
+    "manifestUrl": {
+      "__uuid__": "0aa1d467-fc9d-4f9d-a46f-5d83cc275c7d",
+      "__expectedType__": "cc.Asset"
+    },
     "_id": "cb0hJKyP1L8Lhc8HISZytn"
   },
   {
